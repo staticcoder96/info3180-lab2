@@ -4,7 +4,7 @@ Jinja2 Documentation:    http://jinja.pocoo.org/2/documentation/
 Werkzeug Documentation:  http://werkzeug.pocoo.org/documentation/
 This file creates your application.
 """
-
+import time
 from app import app
 from flask import render_template, request, redirect, url_for
 
@@ -12,17 +12,32 @@ from flask import render_template, request, redirect, url_for
 ###
 # Routing for your application.
 ###
-
 @app.route('/')
 def home():
-    """Render website's home page."""
+    """Render website's home page."""    
     return render_template('home.html')
 
 
 @app.route('/about/')
 def about():
     """Render the website's about page."""
-    return render_template('about.html', name="Mary Jane")
+    return render_template('about.html', name="Stephanie Ramsay")
+    
+    
+@app.route('/profile')
+def profile():
+    """Render the Profile Page"""
+    return render_template('profile.html', name="Stephanie Ramsay")
+    
+
+def timeinfo():
+    #print +time.strftime("%x")
+    return render_template ('profile.html', +time.strftime("%a"))
+    #print (time.strftime("%d/%m/%Y"))
+    #return render_template('profile.html', day )
+    #print ("Current time %s"  %day %date )
+    #print +time.strftime("%x")
+    #print +time.strftime("%a") 
 
 
 ###
@@ -51,6 +66,7 @@ def add_header(response):
 def page_not_found(error):
     """Custom 404 page."""
     return render_template('404.html'), 404
+    
 
 
 if __name__ == '__main__':
