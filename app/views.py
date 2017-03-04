@@ -21,23 +21,18 @@ def home():
 @app.route('/about/')
 def about():
     """Render the website's about page."""
-    return render_template('about.html', name="Stephanie Ramsay")
+    return render_template('about.html', name ="Stephanie Ramsay")
     
     
 @app.route('/profile')
 def profile():
     """Render the Profile Page"""
-    return render_template('profile.html', name="Stephanie Ramsay")
+    return render_template('profile.html', time="is "+timeinfo())
+    
     
 
 def timeinfo():
-    #print +time.strftime("%x")
-    return render_template ('profile.html', +time.strftime("%a"))
-    #print (time.strftime("%d/%m/%Y"))
-    #return render_template('profile.html', day )
-    #print ("Current time %s"  %day %date )
-    #print +time.strftime("%x")
-    #print +time.strftime("%a") 
+    return (time.strftime("%a, %d  %b ,%Y"))
 
 
 ###
